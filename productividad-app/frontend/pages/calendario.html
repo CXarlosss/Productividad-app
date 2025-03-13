@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario | Productividad Pro</title>
+    <link rel="stylesheet" href="../styles/styles-calendario.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="./tareas.html">Tareas</a></li>
+                <li><a href="./estadisticas.html">Estadísticas</a></li>
+                <li><a href="./configuracion.html">Configuración</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="calendario_section">
+        <h1>📅 Mi Calendario</h1>
+
+        <!-- Controles del calendario -->
+        <div class="calendario-controles">
+            <button id="prevMonth">⬅️</button>
+            <h2 id="mes-actual">Marzo 2025</h2>
+            <button id="nextMonth">➡️</button>
+        </div>
+
+        <!-- Calendario dinámico -->
+        <div class="calendario">
+            <div class="calendario-header">
+                <div>Dom</div>
+                <div>Lun</div>
+                <div>Mar</div>
+                <div>Mié</div>
+                <div>Jue</div>
+                <div>Vie</div>
+                <div>Sáb</div>
+            </div>
+            <div id="calendario-body" class="calendario-body">
+                <!-- Aquí se generarán los días dinámicamente con JS -->
+            </div>
+        </div>
+
+        <!-- Formulario para agregar eventos -->
+        <div class="evento-form">
+            <h3>📌 Agregar Evento</h3>
+            <input type="date" id="fechaEvento">
+            <input type="text" id="tituloEvento" placeholder="Título del evento...">
+            <button id="agregarEvento">Agregar</button>
+        </div>
+
+        <!-- Lista de eventos programados -->
+        <section class="eventos-programados">
+            <h2>📋 Eventos Programados</h2>
+            <ul id="listaEventos"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Productividad Pro | Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../javascript/calendario.js"></script>
+</body>
+</html>

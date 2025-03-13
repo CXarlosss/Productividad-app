@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas | Productividad Pro</title>
+    <link rel="stylesheet" href="../styles/styles-estadisticas.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="./tareas.html">Tareas</a></li>
+                <li><a href="./calendario.html">Calendario</a></li>
+                <li><a href="./configuracion.html">Configuración</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="estadisticas_section">
+        <h1>📊 Mis Estadísticas</h1>
+
+        <!-- 🔥 Resumen de Productividad -->
+        <section class="resumen">
+            <div class="resumen-card">
+                <h3>Tareas completadas</h3>
+                <p id="tareasCompletadas">0</p>
+            </div>
+            <div class="resumen-card">
+                <h3>Horas de enfoque</h3>
+                <p id="horasEnfoque">0h</p>
+            </div>
+            <div class="resumen-card">
+                <h3>Eventos programados</h3>
+                <p id="eventosProgramados">0</p>
+            </div>
+        </section>
+
+        <!-- 📈 Gráficos de Productividad -->
+        <section class="graficos">
+            <h2>📅 Tendencias de Productividad</h2>
+            <div class="grafico-container">
+                <canvas id="tareasChart"></canvas>
+            </div>
+            <div class="grafico-container">
+                <canvas id="enfoqueChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Productividad Pro | Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../javascript/estadisticas.js"></script>
+</body>
+</html>

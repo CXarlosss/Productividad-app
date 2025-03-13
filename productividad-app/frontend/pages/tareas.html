@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas | Productividad Pro</title>
+    <link rel="stylesheet" href="../styles/styles-tareas.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="./calendario.html">Calendario</a></li>
+                <li><a href="./estadisticas.html">Estadísticas</a></li>
+                <li><a href="./configuracion.html">Configuración</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="tareas_section">
+        <h1>📋 Mis Tareas</h1>
+        
+        <!-- Barra de entrada de nueva tarea -->
+        <div class="tareas_input_container">
+            <input type="text" id="nuevaTarea" placeholder="Añadir nueva tarea...">
+            <button onclick="agregarTarea()">Agregar</button>
+        </div>
+        
+        <!-- Filtros -->
+        <div class="filtros">
+            <button onclick="filtrarTareas('todas')">Todas</button>
+            <button onclick="filtrarTareas('pendientes')">Pendientes</button>
+            <button onclick="filtrarTareas('completadas')">Completadas</button>
+        </div>
+        
+        <!-- Lista de tareas -->
+        <ul id="listaTareas"></ul>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Productividad Pro | Todos los derechos reservados.</p>
+    </footer>
+    
+    <script src="../javascript/tareas.js"></script>
+</body>
+</html>

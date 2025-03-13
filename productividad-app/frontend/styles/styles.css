@@ -1,0 +1,512 @@
+/*Variables de entorno*/
+:root{
+    --color-fondo: #0a0a0a;
+    --color-texto: #ffffff;
+    --color-morado-neon: #8b5cf6;
+    --color-azul-neon: #3b82f8;
+    --color-verde-neon: #16a34a;
+    --color-amarillo-neon: #f59e0b;
+    --color-rojo-neon: #ef4444;
+    --color-rosa-neon: #f472b6;
+    --sombra-morado:0 0 15px var(--color-morado-neon);
+    --sombra-azul:0 0 15px var(--color-azul-neon);
+    --sombra-verde:0 0 15px var(--color-verde-neon);
+    --sombra-amarillo:0 0 15px var(--color-amarillo-neon);
+    --sombra-rojo:0 0 15px var(--color-rojo-neon);
+    --sombra-rosa:0 0 15px var(--color-rosa-neon);
+}
+
+/*Reset y configuracion global*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;    
+}
+
+body{
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+/*Estilos Navegacion*/
+header {
+    background: rgba(15, 15, 15, 0.9);
+    backdrop-filter: blur(10px); /* Difuminado del fondo */
+    padding: 30px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid rgba(139, 92, 246, 0.5); /* Borde sutil en morado */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Sombra sutil */
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    position: relative;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-morado-neon);
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Efecto de brillo al pasar el mouse */
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0%;
+    height: 3px;
+    background: var(--color-azul-neon);
+    box-shadow: 0px 0px 10px var(--color-azul-neon);
+    transition: 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+nav a:hover {
+    color: var(--color-azul-neon);
+    text-shadow: var(--sombra-azul);
+}
+
+nav a:hover::after {
+    width: 100%; /* Subrayado animado en hover */
+}
+
+
+/* 🎨 Hero Section */
+.hero_section {
+    position: relative;
+    text-align: center;
+    padding: 140px 20px; 
+    background: url('../assets/images/pexels-apasaric-1820770.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Capa de desenfoque */
+.hero_section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.7); /* Oscurecimiento */
+    backdrop-filter: blur(10px); /* Desenfoque */
+    z-index: 1;
+}
+
+/* Contenido sobre el blur */
+.hero_section h1, 
+.hero_section p, 
+.cta_button {
+    position: relative;
+    z-index: 2;
+}
+
+/* Efecto de texto neon */
+.hero_section h1 {
+    font-size: 3.5rem;
+    color: var(--color-morado-neon);
+    text-shadow: 0 0 15px var(--color-morado-neon), 0 0 30px var(--color-morado-neon);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.hero_section p {
+    font-size: 1.2rem;
+    margin: 20px auto;
+    max-width: 600px;
+    color: #d4d4d4;
+    opacity: 0.9;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Botón con glow y animación */
+.cta_button {
+    display: inline-block;
+    background: var(--color-azul-neon);
+    color: #fff;
+    padding: 12px 25px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 0 15px var(--color-azul-neon);
+    transition: 0.3s ease-in-out;
+    animation: glowPulse 1.8s infinite alternate ease-in-out;
+}
+
+/* Efecto hover para el botón */
+.cta_button:hover {
+    box-shadow: 0 0 25px var(--color-azul-neon), 0 0 40px var(--color-morado-neon);
+    transform: scale(1.05);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowPulse {
+    from {
+        box-shadow: 0 0 15px var(--color-azul-neon);
+    }
+    to {
+        box-shadow: 0 0 25px var(--color-azul-neon), 0 0 35px var(--color-morado-neon);
+    }
+}
+
+
+
+/* 🎨 Botón CTA */
+/* Botón CTA */
+.cta_button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    color: var(--color-texto);
+    background: var(--color-azul-neon);
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--color-azul-neon);
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.cta_button:hover {
+    background: var(--color-morado-neon);
+    box-shadow: 0 0 15px var(--color-morado-neon), 0 0 25px var(--color-azul-neon);
+    transform: scale(1.05);
+}
+
+/* 🎨 Características */
+.caracteristicas_principales {
+    text-align: center;
+    padding: 80px 20px;
+    background: rgba(10, 10, 10, 0.9);
+}
+
+.caracteristicas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* Tarjetas de Características */
+/* Tarjetas de Características */
+.feature {
+    background: rgba(25, 25, 25, 0.95);
+    padding: 25px;
+    width: 260px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 0 10px var(--color-azul-neon);
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow al hacer hover */
+.feature:hover {
+    box-shadow: 0 0 20px var(--color-morado-neon), 0 0 30px var(--color-azul-neon);
+    transform: translateY(-8px) scale(1.03);
+}
+
+/* Efecto de luz interna */
+.feature::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--color-azul-neon) 0%, transparent 60%);
+    opacity: 0.15;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.feature:hover::before {
+    opacity: 0.3;
+}
+
+/* Iconos dentro de la tarjeta */
+.feature img {
+    width: 55px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 15px var(--color-azul-neon));
+}
+
+/* Títulos de cada característica */
+.feature h3 {
+    color: var(--color-morado-neon);
+    font-size: 1.6rem;
+    text-shadow: 0 0 10px var(--color-morado-neon);
+}
+
+/* Descripción de cada característica */
+.feature p {
+    color: #ccc;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* 🎬 Animación de entrada general */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicamos la animación a los elementos */
+.hero_section, .caracteristicas_principales, .como_funciona, .testimonios {
+    animation: fadeInUp 1.2s ease-in-out;
+    opacity: 0; /* Ocultar antes de la animación */
+    animation-fill-mode: forwards;
+}
+
+/* Escalonamos la animación con más precisión */
+.caracteristicas_principales {
+    animation-delay: 0.4s;
+}
+.como_funciona {
+    animation-delay: 0.6s;
+}
+.testimonios {
+    animation-delay: 0.9s;
+}
+
+
+
+
+
+
+/* 🎨 Cómo Funciona */
+/* 🎨 Cómo Funciona */
+.como_funciona {
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    background: rgba(10, 10, 10, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 20px var(--color-azul-neon);
+    margin: 40px auto;
+   
+    overflow: hidden;
+}
+
+/* ✨ Efecto Glow en el título */
+.como_funciona h2 {
+    font-size: 2.2rem;
+    color: var(--color-morado-neon);
+    text-shadow: 0 0 15px var(--color-morado-neon), 0 0 30px var(--color-azul-neon);
+    margin-bottom: 20px;
+}
+
+/* 🔹 Estilos para la lista de pasos */
+.como_funciona ol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 12px;
+    background: rgba(20, 20, 20, 0.95);
+    box-shadow: 0 0 12px var(--color-azul-neon);
+    max-width: 700px;
+    margin: auto;
+    position: relative;
+}
+
+/* 🟣 Animación sutil en la lista */
+.como_funciona ol:hover {
+    box-shadow: 0 0 25px var(--color-morado-neon);
+    transform: scale(1.02);
+    transition: 0.3s ease-in-out;
+}
+
+/* 📌 Estilizamos cada paso */
+.como_funciona li {
+    font-size: 1.2rem;
+    color: #d4d4d4;
+    margin: 15px 0;
+    padding: 10px 15px;
+    list-style: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: 0.3s ease-in-out;
+}
+
+/* 🔥 Agregamos numeración con efecto de neón */
+.como_funciona li::before {
+    content: "🔹";
+    font-size: 1.4rem;
+    color: var(--color-azul-neon);
+    text-shadow: 0 0 12px var(--color-azul-neon);
+}
+
+/* 🟡 Efecto al pasar el cursor en cada paso */
+.como_funciona li:hover {
+    color: var(--color-morado-neon);
+    text-shadow: 0 0 15px var(--color-morado-neon);
+    transform: translateX(8px);
+}
+
+/* 🔥 Estilos para los enlaces */
+.como_funciona a {
+    color: var(--color-azul-neon);
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+/* 💫 Efecto glow en los enlaces al pasar el cursor */
+.como_funciona a:hover {
+    color: var(--color-morado-neon);
+    text-shadow: 0 0 15px var(--color-morado-neon);
+}
+
+
+/* 🎤 Testimonios */
+/* 🎤 Sección Testimonios */
+.testimonios {
+    text-align: center;
+    padding: 80px 20px;
+    background: rgba(10, 10, 10, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 20px var(--color-azul-neon);
+    margin: 40px auto;
+    max-width: 1000px;
+    overflow: hidden;
+}
+
+/* ✨ Título con efecto glow */
+.testimonios h2 {
+    font-size: 2.2rem;
+    color: var(--color-morado-neon);
+    text-shadow: 0 0 15px var(--color-morado-neon), 0 0 30px var(--color-azul-neon);
+    margin-bottom: 30px;
+}
+
+/* 🎭 Contenedor Flex para alinear en fila */
+.testimonios_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* 🟣 Tarjetas de testimonios */
+.testimonio {
+    background: rgba(20, 20, 20, 0.95);
+    padding: 20px;
+    width: 280px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 0 15px var(--color-azul-neon);
+    transition: 0.3s ease-in-out;
+}
+
+/* 🎭 Efecto hover */
+.testimonio:hover {
+    box-shadow: 0 0 20px var(--color-morado-neon), 0 0 25px var(--color-azul-neon);
+    transform: translateY(-5px);
+}
+
+/* 🖼️ Imagen del usuario */
+.testimonio img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 10px var(--color-azul-neon));
+}
+
+/* 📌 Texto del testimonio */
+.testimonio p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.4;
+    margin: 10px 0;
+}
+
+
+/* 📌 Pie de Página */
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: rgba(15, 15, 15, 0.9);
+    color: #fff;
+    font-size: 0.9rem;
+    box-shadow: 0 0 15px var(--color-azul-neon);
+}
+
+/* 🎬 Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🔥 Aplicamos la animación con retrasos progresivos */
+.como_funciona, .testimonios, footer {
+    animation: fadeInUp 1.2s ease-in-out;
+    opacity: 0; /* Ocultar antes de la animación */
+    animation-fill-mode: forwards;
+}
+
+/* ✨ Escalonamos la animación */
+.como_funciona {
+    animation-delay: 0.4s;
+}
+.testimonios {
+    animation-delay: 0.6s;
+}
+footer {
+    animation-delay: 0.8s;
+}

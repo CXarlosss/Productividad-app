@@ -1,0 +1,27 @@
+{
+  "name": "paginawebhabitos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CXarlosss/PAGINAWEBHABITOSS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CXarlosss/PAGINAWEBHABITOSS/issues"
+  },
+  "homepage": "https://github.com/CXarlosss/PAGINAWEBHABITOSS#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "eslint": "^9.22.0",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1",
+    "morgan": "^1.10.0"
+  }
+}
