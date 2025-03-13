@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración | Productividad Pro</title>
+    <link rel="stylesheet" href="../styles/styles-header.css">
+    <link rel="stylesheet" href="../styles/styles-configuracion.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="./tareas.html">Tareas</a></li>
+                <li><a href="./calendario.html">Calendario</a></li>
+                <li><a href="./estadisticas.html">Estadísticas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="configuracion_section">
+        <h1>⚙️ Configuración</h1>
+
+        <!-- 🎨 Preferencias de Usuario -->
+        <section class="preferencias">
+            <h2>🎨 Preferencias de Usuario</h2>
+            <!-- 🔥 Selector de tema -->
+            <div class="opcion">
+                <label for="tema">🎨 Tema de Color</label>
+                <select id="tema">
+                    <option value="azul">Azul Neón</option>
+                    <option value="morado">Morado Neón</option>
+                    <option value="verde">Verde Neón</option>
+                    <option value="rojo">Rojo Neón</option>
+                </select>
+            </div>
+    
+            <!-- 📅 Formato de fecha -->
+            <div class="opcion">
+                <label for="formatoFecha">📆 Formato de Fecha</label>
+                <select id="formatoFecha">
+                    <option value="dd/mm/yyyy">DD/MM/AAAA</option>
+                    <option value="mm/dd/yyyy">MM/DD/AAAA</option>
+                </select>
+            </div>
+    
+            <!-- 🔔 Sonido de notificaciones -->
+            <div class="opcion">
+                <label for="sonidoNotificaciones">🔊 Sonido de Notificaciones</label>
+                <input type="checkbox" id="sonidoNotificaciones">
+            </div>
+    
+            <!-- ✅ Botón para guardar configuración -->
+            <button id="guardarConfiguracion">Guardar Cambios</button>
+        </section>
+
+        <!-- 🔄 Opciones Avanzadas -->
+        <section class="opciones_avanzadas">
+            <h2>🔄 Opciones Avanzadas</h2>
+            <button id="exportarDatos">📤 Exportar Datos</button>
+            <button id="restablecerDatos" class="danger">⚠️ Restablecer Datos</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Productividad Pro | Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../javascript/configuracion.js"></script>
+</body>
+</html>

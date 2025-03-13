@@ -1,0 +1,135 @@
+
+button {
+    background: var(--color-principal);
+    box-shadow: var(--sombra-principal);
+    transition: 0.3s ease-in-out;
+    border: 2px solid var(--color-azul-neon);
+    padding: 20px 30px;
+}
+
+button:hover {
+    box-shadow: 0 0 20px var(--color-principal);
+}
+/* 📌 Sección de Configuración */
+.configuracion_section {
+    padding: 100px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 🎯 Título Principal */
+.configuracion_section h1 {
+    font-size: 2.5rem;
+    color: var(--color-morado-neon);
+    text-shadow: var(--sombra-morado);
+    margin-bottom: 30px;
+}
+
+/* 📌 Sección de Preferencias */
+.preferencias, .opciones_avanzadas {
+    background: rgba(25, 25, 25, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--sombra-azul);
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+/* 📌 Subtítulos */
+.preferencias h2, .opciones_avanzadas h2 {
+    font-size: 1.8rem;
+    color: var(--color-azul-neon);
+    text-shadow: var(--sombra-azul);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* 🎨 Opciones de usuario */
+.opcion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: var(--sombra-morado);
+    transition: 0.3s ease-in-out;
+}
+
+.opcion:hover {
+    box-shadow: var(--sombra-azul);
+    transform: translateY(-2px);
+}
+
+/* 🎚️ Estilo de los inputs */
+.opcion input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--color-morado-neon);
+    cursor: pointer;
+}
+
+/* 📌 Selector de idioma */
+.opcion select {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(50, 50, 50, 0.9);
+    color: var(--color-texto);
+    font-size: 1rem;
+    box-shadow: var(--sombra-azul);
+    transition: 0.3s ease-in-out;
+}
+
+.opcion select:hover {
+    box-shadow: var(--sombra-morado);
+}
+
+
+/* 🚀 Botones de Opciones Avanzadas */
+.opciones_avanzadas button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px 0;
+    text-align: center;
+    color: var(--color-texto);
+    transition: 0.3s ease-in-out;
+}
+
+/* 📤 Botón de exportar */
+#exportarDatos {
+    background: var(--color-verde-neon);
+    box-shadow: var(--sombra-verde);
+}
+
+#exportarDatos:hover {
+    background: var(--color-azul-neon);
+    box-shadow: var(--sombra-azul);
+}
+
+/* ⚠️ Botón de restablecer */
+#restablecerDatos {
+    background: var(--color-rojo-neon);
+    box-shadow: var(--sombra-rojo);
+}
+
+#restablecerDatos:hover {
+    background: #b91c1c;
+    box-shadow: 0 0 15px #ff0000;
+}
+
+/* 📌 Pie de Página */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(20, 20, 20, 0.8);
+}
+
+
+
