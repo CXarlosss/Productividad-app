@@ -1,5 +1,5 @@
 {
-  "name": "paginawebhabitos",
+  "name": "productividad-app",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,15 +7,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CXarlosss/PAGINAWEBHABITOSS.git"
+    "url": "git+https://github.com/CXarlosss/Productividad-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CXarlosss/PAGINAWEBHABITOSS/issues"
+    "url": "https://github.com/CXarlosss/Productividad-app/issues"
   },
-  "homepage": "https://github.com/CXarlosss/PAGINAWEBHABITOSS#readme",
+  "homepage": "https://github.com/CXarlosss/Productividad-app#readme",
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.7",
