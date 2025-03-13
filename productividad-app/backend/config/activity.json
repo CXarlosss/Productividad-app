@@ -1,0 +1,17 @@
+[
+    {
+
+      "userId": "660c1a1b8f1b2c0012345678",
+      "tipoActividad": "Ejercicio",
+      "duracionMinutos": 45,
+      "fecha": "2024-03-12T18:00:00.000Z"
+    },
+    {
+
+      "userId": "660c1a1b8f1b2c0012345679",
+      "tipoActividad": "Lectura",
+      "duracionMinutos": 30,
+      "fecha": "2024-03-13T20:00:00.000Z"
+    }
+  ]
+  

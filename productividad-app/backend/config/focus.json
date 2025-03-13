@@ -1,0 +1,17 @@
+[
+    {
+
+      "userId": "660c1a1b8f1b2c0012345678",
+      "duracionMinutos": 50,
+      "tareasCompletadas": 3,
+      "fecha": "2024-03-14T12:00:00.000Z"
+    },
+    {
+
+      "userId": "660c1a1b8f1b2c0012345679",
+      "duracionMinutos": 90,
+      "tareasCompletadas": 5,
+      "fecha": "2024-03-15T15:00:00.000Z"
+    }
+  ]
+  

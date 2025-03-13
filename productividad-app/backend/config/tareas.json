@@ -1,0 +1,15 @@
+[
+    {
+
+      "userId": "660c1a1b8f1b2c0012345678",
+      "texto": "Preparar presentación",
+      "completada": false
+    },
+    {
+    
+      "userId": "660c1a1b8f1b2c0012345679",
+      "texto": "Enviar reporte semanal",
+      "completada": true
+    }
+  ]
+  

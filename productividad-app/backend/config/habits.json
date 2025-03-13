@@ -1,0 +1,17 @@
+[
+    {
+      
+      "userId": "660c1a1b8f1b2c0012345678",
+      "habito": "Beber agua",
+      "frecuencia": "Diaria",
+      "estado": "Activo"
+    },
+    {
+
+      "userId": "660c1a1b8f1b2c0012345679",
+      "habito": "Meditar",
+      "frecuencia": "Semanal",
+      "estado": "Completado"
+    }
+  ]
+  

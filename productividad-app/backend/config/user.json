@@ -1,0 +1,17 @@
+[
+    {
+      
+      "nombre": "Carlos Pérez",
+      "email": "carlos@example.com",
+      "password": "hashedpassword123",
+      "fechaRegistro": "2024-03-05T10:00:00.000Z"
+    },
+    {
+  
+      "nombre": "Ana Martínez",
+      "email": "ana@example.com",
+      "password": "hashedpassword456",
+      "fechaRegistro": "2024-03-10T15:30:00.000Z"
+    }
+  ]
+  
