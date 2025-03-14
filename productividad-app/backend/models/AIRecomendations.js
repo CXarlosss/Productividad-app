@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-
 const AIRecommendationSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    recommendation: { type: String, required: true },
-    date: { type: Date, default: Date.now }
+    usuario: { type: String, required: true }, // 🔴 Prueba con un simple String en vez de ObjectId
+    recomendacion: { type: String, required: true }
 });
 
-module.exports = mongoose.model("AIRecommendation", AIRecommendationSchema);
+
+module.exports = mongoose.model("AIRecommendation", AIRecommendationSchema, "ai_recommendations");
+

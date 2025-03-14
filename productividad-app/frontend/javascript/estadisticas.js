@@ -114,4 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         console.error("⚠️ El elemento canvas #enfoqueChart no se encontró en el DOM.");
     }
+ 
+    
 });

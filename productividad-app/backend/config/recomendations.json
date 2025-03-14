@@ -1,15 +1,63 @@
 [
-    {
+  {
+    "userId": "660c1a1b8f1b2c0012345678",
+    "recomendacion": "Prueba la técnica Pomodoro para mejorar tu productividad.",
+    "fecha": "2024-03-16T09:30:00.000Z"
+  },
+  {
+    "userId": "660c1a1b8f1b2c0012345679",
+    "recomendacion": "Dedica 10 minutos diarios a la reflexión personal.",
+    "fecha": "2024-03-17T14:45:00.000Z"
+  },
 
-      "userId": "660c1a1b8f1b2c0012345678",
-      "recomendacion": "Prueba la técnica Pomodoro para mejorar tu productividad.",
-      "fecha": "2024-03-16T09:30:00.000Z"
-    },
-    {
-   
-      "userId": "660c1a1b8f1b2c0012345679",
-      "recomendacion": "Dedica 10 minutos diarios a la reflexión personal.",
-      "fecha": "2024-03-17T14:45:00.000Z"
-    }
-  ]
-  
+  {
+    "userId": "660c1a1b8f1b2c0012345680",
+    "recomendacion": "Empieza tu día con una lista de prioridades para mantener el enfoque.",
+    "fecha": "2024-03-18T08:00:00.000Z"
+  },
+  {
+    "userId": "660c1a1b8f1b2c0012345681",
+    "recomendacion": "Desconéctate de las redes sociales durante tus horas de mayor concentración.",
+    "fecha": "2024-03-19T12:15:00.000Z"
+  },
+  {
+    "userId": "660c1a1b8f1b2c0012345682",
+    "recomendacion": "Tómate un descanso de 5 minutos por cada 25 minutos de trabajo intenso.",
+    "fecha": "2024-03-20T15:20:00.000Z"
+  },
+  {
+    "userId": "660c1a1b8f1b2c0012345683",
+    "recomendacion": "Organiza tu espacio de trabajo para evitar distracciones innecesarias.",
+    "fecha": "2024-03-21T09:45:00.000Z"
+  },
+  {
+    "userId": "660c1a1b8f1b2c0012345684",
+    "recomendacion": "Empieza el día con una pequeña victoria, como hacer la cama o beber un vaso de agua.",
+    "fecha": "2024-03-22T07:30:00.000Z"
+  },
+  {
+    "userId": "660c1a1b8f1b2c0012345685",
+    "recomendacion": "Utiliza la regla de los dos minutos: si algo toma menos de dos minutos, hazlo de inmediato.",
+    "fecha": "2024-03-23T10:50:00.000Z"
+  },
+  {
+    "userId": "660c1a1b8f1b2c0012345686",
+    "recomendacion": "Escucha música instrumental para mejorar tu concentración mientras trabajas.",
+    "fecha": "2024-03-24T14:10:00.000Z"
+  },
+  {
+    "userId": "660c1a1b8f1b2c0012345687",
+    "recomendacion": "No multitasking: enfócate en una tarea a la vez para ser más eficiente.",
+    "fecha": "2024-03-25T16:45:00.000Z"
+  },
+  {
+    "userId": "660c1a1b8f1b2c0012345688",
+    "recomendacion": "Asegúrate de dormir al menos 7 horas para maximizar tu rendimiento.",
+    "fecha": "2024-03-26T22:30:00.000Z"
+  },
+  {
+    "userId": "660c1a1b8f1b2c0012345689",
+    "recomendacion": "Establece un tiempo límite para cada tarea para evitar procrastinar.",
+    "fecha": "2024-03-27T11:20:00.000Z"
+  }
+]
