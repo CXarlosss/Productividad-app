@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (tareasChartEl) {
         const ctxTareas = tareasChartEl.getContext("2d");
         if (ctxTareas) {
+           
             // @ts-ignore
             new Chart(ctxTareas, {
                 type: "doughnut",
