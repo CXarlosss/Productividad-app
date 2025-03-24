@@ -10,7 +10,7 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
 } else {
     document.addEventListener("DOMContentLoaded", () => {
         obtenerTareas();
-        window.agregarTarea = agregarTarea; // Hacerla global si se usa desde onclick
+        
     });
 
     inputTarea.addEventListener("keypress", (event) => {
@@ -23,7 +23,6 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
             filtrarTareas(filtro);
         });
     });
-
    /*  // 📌 Función para obtener tareas desde el servidor
     async function obtenerTareas() {
         try {
@@ -176,7 +175,7 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
         });
     }); */
 
-    // 📌 Función para filtrar tareas sin afectar la API
+   /*  // 📌 Función para filtrar tareas sin afectar la API
     async function filtrarTareas(filtro) {
         try {
             const API_PORT = location.port ? `:${location.port}` : "";
@@ -194,7 +193,7 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
         } catch (error) {
             console.error("❌ Error al filtrar tareas:", error.message);
         }
-    }
+    } */
     function obtenerTareas() {
         const tareas = leerDesdeStorage();
         renderizarTareas(tareas);
@@ -202,27 +201,52 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
     }
 
     // 📌 Agregar una nueva tarea
-    function agregarTarea() {
-        const texto = inputTarea?.value.trim();
-        if (!texto) {
-            alert("Por favor, escribe una tarea.");
-            return;
+        // 📌 Agregar una nueva tarea
+        function agregarTarea() {
+            const texto = inputTarea?.value.trim();
+            if (!texto) {
+                alert("Por favor, escribe una tarea.");
+                return;
+            }
+    
+            const tareas = leerDesdeStorage();
+            const nueva = {
+                id: crypto.randomUUID(),
+                texto,
+                completada: false
+            };
+    
+            tareas.push(nueva);
+            guardarEnStorage(tareas);
+            inputTarea.value = "";
+            renderizarTareas(tareas);
+            actualizarEstadisticas();
         }
-
-        const tareas = leerDesdeStorage();
-        const nueva = {
-            id: crypto.randomUUID(),
-            texto,
-            completada: false
-        };
-
-        tareas.push(nueva);
-        guardarEnStorage(tareas);
-        inputTarea.value = "";
-        renderizarTareas(tareas);
-        actualizarEstadisticas();
-    }
-
+    
+        window.agregarTarea = agregarTarea; // ✅ ahora sí la expone al HTML
+    
+        // 📌 Filtrar tareas (todas, pendientes, completadas)
+        function filtrarTareas(filtro) {
+            let tareas = leerDesdeStorage();
+            if (filtro === "pendientes") {
+                tareas = tareas.filter(t => !t.completada);
+            } else if (filtro === "completadas") {
+                tareas = tareas.filter(t => t.completada);
+            }
+            renderizarTareas(tareas);
+        }
+    
+        window.filtrarTareas = filtrarTareas; // ✅ lo mismo aquí
+    
+        // 📌 Helpers: leer y guardar en localStorage
+        function leerDesdeStorage() {
+            return JSON.parse(localStorage.getItem("tareas") || "[]");
+        }
+    
+        function guardarEnStorage(tareas) {
+            localStorage.setItem("tareas", JSON.stringify(tareas));
+        }
+    
     // 📌 Eliminar tarea
     function eliminarTarea(id) {
         const tareas = leerDesdeStorage().filter((t) => t.id !== id);
