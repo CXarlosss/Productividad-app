@@ -30,7 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     async function obtenerRecomendaciones() {
         try {
-            const respuesta = await fetch("http://localhost:5000/api/recommendations");
+            const API_PORT = location.port ? `:${location.port}` : "";
+
+            const respuesta = await fetch(`${location.protocol}//${location.hostname}${API_PORT}/api/recommendations`);
             if (!respuesta.ok) throw new Error("Error al obtener recomendaciones");
 
             const recomendaciones = await respuesta.json();
@@ -57,7 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const nuevaRecomendacion = { usuario: usuarioId, recomendacion: recomendacionTexto };
 
         try {
-            const respuesta = await fetch("http://localhost:5000/api/recommendations", {
+            const API_PORT = location.port ? `:${location.port}` : "";
+
+             const respuesta = await fetch(`${location.protocol}//${location.hostname}${API_PORT}/api/recommendations`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(nuevaRecomendacion),
@@ -78,7 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     async function eliminarRecomendacion(id) {
         try {
-            const respuesta = await fetch(`http://localhost:5000/api/recommendations/${id}`, {
+            const API_PORT = location.port ? `:${location.port}` : "";
+             const respuesta = await fetch(`${location.protocol}//${location.hostname}${API_PORT}/api/recommendations/${id}`, {
                 method: "DELETE",
             });
 

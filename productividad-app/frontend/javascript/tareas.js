@@ -22,7 +22,9 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
     // 📌 Función para obtener tareas desde el servidor
     async function obtenerTareas() {
         try {
-            const respuesta = await fetch("http://localhost:5000/api/tareas");
+            const API_PORT = location.port ? `:${location.port}` : "";
+
+            const respuesta = await fetch(`${location.protocol}//${location.hostname}${API_PORT}/api/tareas`);
             if (!respuesta.ok) throw new Error("Error al obtener las tareas");
             const tareas = await respuesta.json();
             renderizarTareas(tareas);
@@ -44,7 +46,9 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
         const nuevaTarea = { texto: textoTarea, completada: false };
 
         try {
-            const respuesta = await fetch("http://localhost:5000/api/tareas", {
+            const API_PORT = location.port ? `:${location.port}` : "";
+
+            const respuesta = await fetch(`${location.protocol}//${location.hostname}${API_PORT}/api/tareas`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(nuevaTarea),
@@ -62,7 +66,9 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
     // 📌 Función para eliminar tarea
     async function eliminarTarea(id) {
         try {
-            const respuesta = await fetch(`http://localhost:5000/api/tareas/${id}`, {
+            const API_PORT = location.port ? `:${location.port}` : "";
+
+            const respuesta = await fetch(`${location.protocol}//${location.hostname}${API_PORT}/api/tareas/${id}`, {
                 method: "DELETE",
             });
 
@@ -77,7 +83,8 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
     // 📌 Función para marcar tarea como completada
     async function completarTarea(id, estadoActual) {
         try {
-            const respuesta = await fetch(`http://localhost:5000/api/tareas/${id}`, {
+            const API_PORT = location.port ? `:${location.port}` : "";
+             const respuesta = await fetch(`${location.protocol}//${location.hostname}${API_PORT}api/tareas/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ completada: !estadoActual }),
@@ -95,7 +102,8 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
     // 📌 Función para actualizar estadísticas
     async function actualizarEstadisticas() {
         try {
-            const respuesta = await fetch("http://localhost:5000/api/tareas");
+            const API_PORT = location.port ? `:${location.port}` : "";
+             const respuesta = await fetch(`${location.protocol}//${location.hostname}${API_PORT}api/tareas`);
             if (!respuesta.ok) throw new Error("Error al obtener estadísticas");
 
             const tareas = await respuesta.json();
@@ -166,7 +174,8 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
     // 📌 Función para filtrar tareas sin afectar la API
     async function filtrarTareas(filtro) {
         try {
-            const respuesta = await fetch("http://localhost:5000/api/tareas");
+            const API_PORT = location.port ? `:${location.port}` : "";
+             const respuesta = await fetch(`${location.protocol}//${location.hostname}${API_PORT}/api/tareas`);
             if (!respuesta.ok) throw new Error("Error al filtrar tareas");
 
             let tareas = await respuesta.json();
