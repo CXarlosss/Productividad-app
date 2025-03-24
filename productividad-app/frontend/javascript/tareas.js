@@ -10,13 +10,18 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
 } else {
     document.addEventListener("DOMContentLoaded", () => {
         obtenerTareas();
-        window.agregarTarea = agregarTarea; // ✅ Hacer disponible agregarTarea en el ámbito global
+        window.agregarTarea = agregarTarea; // Hacerla global si se usa desde onclick
     });
 
     inputTarea.addEventListener("keypress", (event) => {
-        if (event.key === "Enter") {
-            agregarTarea();
-        }
+        if (event.key === "Enter") agregarTarea();
+    });
+
+    filtros.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            const filtro = boton.innerHTML.toLowerCase();
+            filtrarTareas(filtro);
+        });
     });
 
    /*  // 📌 Función para obtener tareas desde el servidor
@@ -196,6 +201,7 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
         actualizarEstadisticas();
     }
 
+    // 📌 Agregar una nueva tarea
     function agregarTarea() {
         const texto = inputTarea?.value.trim();
         if (!texto) {
@@ -212,11 +218,12 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
 
         tareas.push(nueva);
         guardarEnStorage(tareas);
-        inputTarea?.value = "";
+        inputTarea.value = "";
         renderizarTareas(tareas);
         actualizarEstadisticas();
     }
 
+    // 📌 Eliminar tarea
     function eliminarTarea(id) {
         const tareas = leerDesdeStorage().filter((t) => t.id !== id);
         guardarEnStorage(tareas);
@@ -224,6 +231,7 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
         actualizarEstadisticas();
     }
 
+    // 📌 Completar tarea
     function completarTarea(id, estadoActual) {
         const tareas = leerDesdeStorage().map((t) => {
             if (t.id === id) {
@@ -237,6 +245,7 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
         actualizarEstadisticas();
     }
 
+    // 📌 Actualizar estadísticas
     function actualizarEstadisticas() {
         const tareas = leerDesdeStorage();
         const completadas = tareas.filter(t => t.completada).length;
@@ -244,8 +253,9 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
         console.log("✅ Estadísticas actualizadas:", { completadas });
     }
 
+    // 📌 Renderizar tareas
     function renderizarTareas(tareas) {
-        listaTareas?.innerHTML = "";
+        listaTareas.innerHTML = "";
 
         tareas.forEach((tarea) => {
             const li = document.createElement("li");
@@ -260,7 +270,7 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
                 </div>
             `;
 
-            listaTareas?.appendChild(li);
+            listaTareas.appendChild(li);
         });
 
         document.querySelectorAll(".boton-completar").forEach((btn) => {
@@ -281,13 +291,7 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
         });
     }
 
-    filtros.forEach((boton) => {
-        boton.addEventListener("click", () => {
-            const filtro = boton.innerHTML.toLowerCase();
-            filtrarTareas(filtro);
-        });
-    });
-
+    // 📌 Filtrar tareas (todas, pendientes, completadas)
     function filtrarTareas(filtro) {
         let tareas = leerDesdeStorage();
         if (filtro === "pendientes") {
@@ -298,6 +302,7 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
         renderizarTareas(tareas);
     }
 
+    // 📌 Helpers: leer y guardar en localStorage
     function leerDesdeStorage() {
         return JSON.parse(localStorage.getItem("tareas") || "[]");
     }
@@ -306,5 +311,3 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
         localStorage.setItem("tareas", JSON.stringify(tareas));
     }
 }
-
-
