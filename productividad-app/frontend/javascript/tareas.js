@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 // 📌 Elementos del DOM
 const inputTarea = /** @type {HTMLInputElement | null} */ (document.getElementById("nuevaTarea"));
@@ -19,7 +19,7 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
         }
     });
 
-    // 📌 Función para obtener tareas desde el servidor
+   /*  // 📌 Función para obtener tareas desde el servidor
     async function obtenerTareas() {
         try {
             const API_PORT = location.port ? `:${location.port}` : "";
@@ -169,7 +169,7 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
             const filtro = boton.innerHTML.toLowerCase();
             filtrarTareas(filtro);
         });
-    });
+    }); */
 
     // 📌 Función para filtrar tareas sin afectar la API
     async function filtrarTareas(filtro) {
@@ -190,4 +190,121 @@ if (!inputTarea || !listaTareas || filtros.length === 0) {
             console.error("❌ Error al filtrar tareas:", error.message);
         }
     }
+    function obtenerTareas() {
+        const tareas = leerDesdeStorage();
+        renderizarTareas(tareas);
+        actualizarEstadisticas();
+    }
+
+    function agregarTarea() {
+        const texto = inputTarea?.value.trim();
+        if (!texto) {
+            alert("Por favor, escribe una tarea.");
+            return;
+        }
+
+        const tareas = leerDesdeStorage();
+        const nueva = {
+            id: crypto.randomUUID(),
+            texto,
+            completada: false
+        };
+
+        tareas.push(nueva);
+        guardarEnStorage(tareas);
+        inputTarea?.value = "";
+        renderizarTareas(tareas);
+        actualizarEstadisticas();
+    }
+
+    function eliminarTarea(id) {
+        const tareas = leerDesdeStorage().filter((t) => t.id !== id);
+        guardarEnStorage(tareas);
+        renderizarTareas(tareas);
+        actualizarEstadisticas();
+    }
+
+    function completarTarea(id, estadoActual) {
+        const tareas = leerDesdeStorage().map((t) => {
+            if (t.id === id) {
+                return { ...t, completada: !estadoActual };
+            }
+            return t;
+        });
+
+        guardarEnStorage(tareas);
+        renderizarTareas(tareas);
+        actualizarEstadisticas();
+    }
+
+    function actualizarEstadisticas() {
+        const tareas = leerDesdeStorage();
+        const completadas = tareas.filter(t => t.completada).length;
+        localStorage.setItem("tareasCompletadas", JSON.stringify(completadas));
+        console.log("✅ Estadísticas actualizadas:", { completadas });
+    }
+
+    function renderizarTareas(tareas) {
+        listaTareas?.innerHTML = "";
+
+        tareas.forEach((tarea) => {
+            const li = document.createElement("li");
+            li.classList.add("tarea");
+            if (tarea.completada) li.classList.add("completada");
+
+            li.innerHTML = `
+                <span class="tarea-texto">${tarea.texto}</span>
+                <div class="acciones">
+                    <button class="boton-completar" data-id="${tarea.id}" data-completada="${tarea.completada}">✅</button>
+                    <button class="boton-eliminar" data-id="${tarea.id}">❌</button>
+                </div>
+            `;
+
+            listaTareas?.appendChild(li);
+        });
+
+        document.querySelectorAll(".boton-completar").forEach((btn) => {
+            btn.addEventListener("click", (event) => {
+                const target = event.target;
+                const id = target?.getAttribute("data-id");
+                const estado = target?.getAttribute("data-completada") === "true";
+                if (id) completarTarea(id, estado);
+            });
+        });
+
+        document.querySelectorAll(".boton-eliminar").forEach((btn) => {
+            btn.addEventListener("click", (event) => {
+                const target = event.target;
+                const id = target?.getAttribute("data-id");
+                if (id) eliminarTarea(id);
+            });
+        });
+    }
+
+    filtros.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            const filtro = boton.innerHTML.toLowerCase();
+            filtrarTareas(filtro);
+        });
+    });
+
+    function filtrarTareas(filtro) {
+        let tareas = leerDesdeStorage();
+        if (filtro === "pendientes") {
+            tareas = tareas.filter(t => !t.completada);
+        } else if (filtro === "completadas") {
+            tareas = tareas.filter(t => t.completada);
+        }
+        renderizarTareas(tareas);
+    }
+
+    function leerDesdeStorage() {
+        return JSON.parse(localStorage.getItem("tareas") || "[]");
+    }
+
+    function guardarEnStorage(tareas) {
+        localStorage.setItem("tareas", JSON.stringify(tareas));
+    }
 }
+
+

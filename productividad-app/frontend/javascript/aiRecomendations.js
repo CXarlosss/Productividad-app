@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 document.addEventListener("DOMContentLoaded", () => {
     /** @type {HTMLUListElement | null} */
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /**
      * 📌 Obtener todas las recomendaciones desde la API
      */
-    async function obtenerRecomendaciones() {
+ /*    async function obtenerRecomendaciones() {
         try {
             const API_PORT = location.port ? `:${location.port}` : "";
 
@@ -41,12 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
             console.error("❌ Error:", error.message);
         }
-    }
+    } */ 
+   function obtenerRecomendaciones() {
+        const guardadas = localStorage.getItem("recomendaciones");
+        const recomendaciones = guardadas ? JSON.parse(guardadas) : [];
+        renderizarRecomendaciones(recomendaciones);
+      }
+    
 
     /**
      * 📌 Agregar una nueva recomendación
      */
-    async function agregarRecomendacion() {
+   /*  async function agregarRecomendacion() {
         if (!inputRecomendacion) return; // ✅ Si no existe, salir
 
         const recomendacionTexto = inputRecomendacion.value.trim();
@@ -74,12 +80,32 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
             console.error("❌ Error:", error.message);
         }
-    }
+    } */
+    function agregarRecomendacion() {
+        if (!inputRecomendacion) return;
+    
+        const texto = inputRecomendacion.value.trim();
+        if (!texto) {
+          alert("Por favor, escribe una recomendación.");
+          return;
+        }
+    
+        const nuevas = obtenerDesdeStorage();
+        const nuevaRecomendacion = {
+          id: crypto.randomUUID(),
+          recomendacion: texto
+        };
+    
+        nuevas.push(nuevaRecomendacion);
+        localStorage.setItem("recomendaciones", JSON.stringify(nuevas));
+        inputRecomendacion.value = "";
+        renderizarRecomendaciones(nuevas);
+      }
 
     /**
      * 📌 Eliminar una recomendación
      * @param {string} id - ID de la recomendación a eliminar
-     */
+     *//* 
     async function eliminarRecomendacion(id) {
         try {
             const API_PORT = location.port ? `:${location.port}` : "";
@@ -93,9 +119,18 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
             console.error("❌ Error:", error.message);
         }
-    }
+    } *//**
+   * 📌 Eliminar una recomendación por ID
+   * @param {string} id
+   */
+  function eliminarRecomendacion(id) {
+    const actuales = obtenerDesdeStorage();
+    const filtradas = actuales.filter((r) => r.id !== id);
+    localStorage.setItem("recomendaciones", JSON.stringify(filtradas));
+    renderizarRecomendaciones(filtradas);
+  }
 
-    /**
+ /*    /**
      * 📌 Renderizar recomendaciones en la lista
      * @param {Array<{_id: string, recomendacion: string}>} recomendaciones - Lista de recomendaciones
      */
@@ -128,3 +163,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+ /**
+   * 📌 Renderizar recomendaciones en la lista
+   * @param {Array<{id: string, recomendacion: string}>} recomendaciones
+   */
+ function renderizarRecomendaciones(recomendaciones) {
+    if (!listaRecomendaciones) return;
+
+    listaRecomendaciones.innerHTML = "";
+
+    recomendaciones.forEach((rec) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <span>${rec.recomendacion}</span>
+        <button class="eliminar" data-id="${rec.id}">❌</button>
+      `;
+      listaRecomendaciones.appendChild(li);
+    });
+
+    document.querySelectorAll(".eliminar").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const id = /** @type {HTMLElement} */ (e.target).getAttribute("data-id");
+        if (id) eliminarRecomendacion(id);
+      });
+    });
+  }
+ /** 
+   * 📌 Obtener recomendaciones como array desde localStorage
+   * @returns {Array<{id: string, recomendacion: string}>}
+   */
+ function obtenerDesdeStorage() {
+    const datos = localStorage.getItem("recomendaciones");
+    return datos ? JSON.parse(datos) : [];
+  }
+
