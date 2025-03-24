@@ -1,6 +1,7 @@
 [build]
-  publish = "productividad-app/frontend"
-  command = "npm install"
+  base = "productividad-app"
+  publish = "frontend"  # O "frontend/dist" si generas algo ahí
+  command = "npm run build"
 
 [functions]
   directory = "netlify/functions"

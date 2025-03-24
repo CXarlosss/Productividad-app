@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc",
-    "start": "node productividad-app/backend/index.js",
+    "build": "echo 'No hay compilación, es JavaScript puro'",
+    "start": "node productividad-app/backend/server.js",
     "dev": "nodemon src/index.js"
   },
   "repository": {
