@@ -1,7 +1,12 @@
 [build]
-  base = "productividad-app"
-  command = "npm run build"
-  publish = "frontend/dist"
+  base = "productividad-app/frontend"
+  publish = "public"
+  command = "chmod +x ../node_modules/.bin/tsc && npm run build"
 
 [functions]
   directory = "netlify/functions"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
