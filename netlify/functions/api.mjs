@@ -46,17 +46,17 @@ export { connectDB, ObjectId };
 
 // Importamos las rutas
 
-const userRoutes = require("../../../productividad-app/backend/routes/user");
+const userRoutes = require("../../productividad-app/backend/routes/user");
 
-const activityRoutes = require("../../../productividad-app/backend/routes/userActivity");
+const activityRoutes = require("../../productividad-app/backend/routes/userActivity");
 
-const habitsRoutes = require("../../../productividad-app/backend/routes/habits");
+const habitsRoutes = require("../../productividad-app/backend/routes/habits");
 
-const focusRoutes = require("../../../productividad-app/backend/routes/focusSessions.js");
+const focusRoutes = require("../../productividad-app/backend/routes/focusSessions.js");
 
-const recommendationsRoutes = require("../../../productividad-app/backend/routes/aiRecomendations");
+const recommendationsRoutes = require("../../productividad-app/backend/routes/aiRecomendations");
 
-const tareasRoutes = require("../../../productividad-app/backend/routes/tareas");
+const tareasRoutes = require("../../productividad-app/backend/routes/tareas");
 
 router.use("/api/users", userRoutes);
 router.use("/api/activity", activityRoutes);
