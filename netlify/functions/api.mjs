@@ -1,92 +1,61 @@
-// Docs on request and context https://docs.netlify.com/functions/build/#code-your-function-2
-// @ts-ignore
-export default (request, context) => {
-  try {
-    const url = new URL(request.url)
-    const subject = url.searchParams.get('name') || 'World'
-
-    return new Response(`Hello ${subject}`)
-  } catch (error) {
-    return new Response(error.toString(), {
-      status: 500,
-    })
-  }
-}
 // @ts-nocheck
-import express, { Router } from "express";
-// @ts-ignore
+import express from "express";
 import serverless from "serverless-http";
 import cors from "cors";
-import path from "path";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import { MongoClient, ObjectId } from "mongodb";
 
-// 🔹 Config
+// Utilidades para ESModules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Configurar entorno
 dotenv.config();
+
+// Express setup
 const app = express();
-const router = Router();
+const router = express.Router();
+
 app.use(cors());
 app.use(express.json());
 
-// 🔹 MongoDB Setup
+// MongoDB setup
 const URI = process.env.MONGO_ATLAS || "mongodb://localhost:27017";
 const dbName = "React";
 const client = new MongoClient(URI);
 
 async function connectDB() {
-  // @ts-ignore
   if (!client.topology || client.topology.s.state !== "connected") {
     await client.connect();
   }
   return client.db(dbName);
 }
 
-// 📌 Exportar para otros archivos si es necesario
-export { connectDB, ObjectId };
+// 🧩 Importar rutas adaptadas (deben usar `export default`)
+import userRoutes from "../../productividad-app/backend/routes/user.js";
+import activityRoutes from "../../productividad-app/backend/routes/userActivity.js";
+import habitsRoutes from "../../productividad-app/backend/routes/habits.js";
+import focusRoutes from "../../productividad-app/backend/routes/focusSessions.js";
+import recommendationsRoutes from "../../productividad-app/backend/routes/aiRecomendations.js";
+import tareasRoutes from "../../productividad-app/backend/routes/tareas.js";
 
-// Importamos las rutas
+// 🧩 Montar rutas
+router.use("/users", userRoutes);
+router.use("/activity", activityRoutes);
+router.use("/habits", habitsRoutes);
+router.use("/focus", focusRoutes);
+router.use("/recommendations", recommendationsRoutes);
+router.use("/tareas", tareasRoutes);
 
-const userRoutes = require("../../productividad-app/backend/routes/user");
-
-const activityRoutes = require("../../productividad-app/backend/routes/userActivity");
-
-const habitsRoutes = require("../../productividad-app/backend/routes/habits");
-
-const focusRoutes = require("../../productividad-app/backend/routes/focusSessions.js");
-
-const recommendationsRoutes = require("../../productividad-app/backend/routes/aiRecomendations");
-
-const tareasRoutes = require("../../productividad-app/backend/routes/tareas");
-
-router.use("/api/users", userRoutes);
-router.use("/api/activity", activityRoutes);
-router.use("/api/habits", habitsRoutes);
-router.use("/api/focus", focusRoutes);
-router.use("/api/recommendations", recommendationsRoutes);
-router.use("/api/tareas", tareasRoutes);
-
-
-
-// Ruta para servir la página de tareas
-// @ts-ignore
-router.get("/tareas", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/tareas.html"));
+// 🧩 Endpoint de test
+router.get("/", (req, res) => {
+  res.send("🚀 API Serverless funcionando en Netlify");
 });
 
+// Aplicar rutas bajo la ruta base de Netlify
+app.use("/.netlify/functions/api", router);
 
-
-
-
-
-
-
-
-
-
-
-
-
-// 🔹 Iniciar el servidor
-
-// @ts-ignore
-app.listen(PORT, () => console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`));
+// Exportar como función serverless
+export const handler = serverless(app);
