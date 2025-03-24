@@ -1,7 +1,6 @@
 [build]
-  base = "productividad-app/frontend"
-  publish = "public"
-  command = "chmod +x ../node_modules/.bin/tsc && npm run build"
+  publish = "productividad-app/frontend"
+  command = "npm install"
 
 [functions]
   directory = "netlify/functions"
